@@ -1,9 +1,13 @@
 FILENAME ?= "main"
 PREFIX ?= "output"
+TEMPDIR ?= "tempdir"
 
 all:
 	@latexmk -pdflua \
-		-interaction=nonstopmode \
-		-outdir=$(PREFIX)
+		-outdir=$(TEMPDIR) \
 		./$(FILENAME).tex
 .PHONY: all
+
+install:
+	@mkdir -p $(PREFIX)
+	@cp -av $(TEMPDIR)/*.pdf $(PREFIX)
