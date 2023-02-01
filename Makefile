@@ -1,6 +1,6 @@
 FILENAME ?= "main"
 PREFIX ?= "output"
-TEMPDIR ?= "tempdir"
+TEMPDIR ?= "builddir"
 
 all:
 	@latexmk -pdflua \
