@@ -11,3 +11,4 @@ all:
 install:
 	@mkdir -p $(PREFIX)
 	@cp -av $(TEMPDIR)/*.pdf $(PREFIX)
+.PHONY: install
