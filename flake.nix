@@ -28,7 +28,11 @@
               inherit
                 (pkgs.texlive)
                 scheme-basic
+                chktex
+                latexindent
                 latexmk
+                #
+
                 koma-script
                 ;
             })
