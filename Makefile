@@ -2,13 +2,22 @@ FILENAME ?= "main"
 PREFIX ?= "output"
 TEMPDIR ?= "builddir"
 
+LATEXMK = latexmk -pdflua -outdir=$(TEMPDIR)
+
+.PHONY: all install watch
+
 all:
-	@latexmk -pdflua \
-		-outdir=$(TEMPDIR) \
-		./$(FILENAME).tex
-.PHONY: all
+	@$(LATEXMK) \
+		$(FILENAME).tex
 
 install:
 	@mkdir -p $(PREFIX)
-	@cp -av $(TEMPDIR)/*.pdf $(PREFIX)
-.PHONY: install
+	@cp -avL $(TEMPDIR)/*.pdf $(PREFIX)
+
+watch:
+	@$(LATEXMK) \
+		-synctex=1 \
+		-pvc -view=none \
+		-interaction=nonstopmode \
+		-f \
+		$(FILENAME).tex
