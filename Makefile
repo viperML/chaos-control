@@ -5,6 +5,7 @@ TEMPDIR ?= "builddir"
 LATEXMK = latexmk \
 	-pdflua \
 	-interaction=nonstopmode \
+	-synctex=1 \
 	-outdir=$(TEMPDIR)
 
 .PHONY: all install watch
@@ -19,7 +20,6 @@ install:
 
 watch:
 	@$(LATEXMK) \
-		-synctex=1 \
 		-pvc -view=none \
 		-f \
 		$(FILENAME).tex

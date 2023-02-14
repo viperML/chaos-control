@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{systeme}
 \usepackage{listings}
+\usepackage{graphicx}
 
 
 
@@ -29,7 +30,9 @@ sistema inevitablemente divergirán, hasta que sean irreconocibles.
 Por otra parte, el sistema es de dimensión 5, por lo que la dinámica que
 presenta es más compleja de lo normal. Por eso usamos el prefijo \emph{hiper}.
 
-Las ecucaciones del sistema en tiempo discreto son las siguientes:
+Las ecucaciones del sistema en tiempo discreto se describen a continuación,
+junto con una representación de las dos primeras componentes de una simulación
+que se ha dejado ejecutar durante unos segundos.
 
 
 \begin{align*}
@@ -57,6 +60,11 @@ Los parámetros para el sistema de estudio:
 	 & a_{11} = 0.6 \\
 \end{align*}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{caos}
+\end{figure}
+
 \section{Control}
 
 El sistema será controlado con una señal $u$ impulsiva, como se ha expuesto en
@@ -70,5 +78,16 @@ Para la simulación del sistema, se ha utilizado un programa en Basic del que se
 incluye el siguiente código:
 
 \lstinputlisting[basicstyle=\tiny]{main.bas}
+
+\section{Resultados}
+
+Los resultados de la simulación muestran un control del sistema, que se mantiene
+en una trayectoria estable durante un periodo de convergencia. A continuación se
+muestra una representación de esta trayectoria:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{control}
+\end{figure}
 
 \end{document}
