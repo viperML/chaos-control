@@ -2,7 +2,10 @@ FILENAME ?= "main"
 PREFIX ?= "output"
 TEMPDIR ?= "builddir"
 
-LATEXMK = latexmk -pdflua -outdir=$(TEMPDIR)
+LATEXMK = latexmk \
+	-pdflua \
+	-interaction=nonstopmode \
+	-outdir=$(TEMPDIR)
 
 .PHONY: all install watch
 
@@ -18,6 +21,8 @@ watch:
 	@$(LATEXMK) \
 		-synctex=1 \
 		-pvc -view=none \
-		-interaction=nonstopmode \
 		-f \
 		$(FILENAME).tex
+
+clean:
+	@rm -rvf $(TEMPDIR)
